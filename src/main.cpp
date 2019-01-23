@@ -16,6 +16,8 @@ uint32_t _estack;
 
 using namespace kernel;
 
+
+/*Task using to know if device still alive, just blink the led*/
 void ledFct(uint32_t p)
 {
 	//Green PB7 - Red PB8
@@ -32,6 +34,9 @@ void ledFct(uint32_t p)
 }
 auto ledTask = TaskWithStack<128>(ledFct,2,"test",0);
 
+
+
+/*Task to Test if read and write into flash is working*/
 void testFlash(uint32_t p)
 {
 	bool debug = false;
@@ -45,7 +50,7 @@ void testFlash(uint32_t p)
 			memory.save(data);
 	}
 }
-auto testFlashTask = TaskWithStack<1024>(testFlash, 2, "testFlash", 0);
+auto testFlashTask = TaskWithStack<128>(testFlash, 2, "testFlash", 0);
 
 
 int main(void)

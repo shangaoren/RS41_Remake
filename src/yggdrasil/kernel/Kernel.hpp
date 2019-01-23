@@ -178,7 +178,7 @@ namespace kernel
 		static Task* volatile s_previousTask;
 		static uint32_t s_sysTickFreq;
 		
-		static TaskWithStack<256> s_idle;
+		static TaskWithStack<128> s_idle;
 		
 		
 		
